@@ -9,6 +9,7 @@ CONFIG -= app_bundle
 
 SOURCES += \
         Observer.cpp \
+        Subject.cpp \
         main.cpp
 
 # Default rules for deployment.

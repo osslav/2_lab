@@ -10,8 +10,15 @@ class ASubject
     QList<ObserverFile*> list;
 public:
     void Attach(ObserverFile *newFile);
-    void Detach(ObserverFile *product);
-    void Notify(float price);
+    void Detach(ObserverFile *removedFile);
+    void Notify(int statusFile, int size);
 };
+
+class MyFile : public ASubject
+{
+public:
+    void ChangeSize(int statusFile, int size);
+};
+
 
 #endif // SUBJECT_H
