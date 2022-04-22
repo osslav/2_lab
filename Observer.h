@@ -12,6 +12,7 @@ class ObserverFile : public IObserverFile
 {
     QString name;
     int size;
+public:
     ObserverFile(QString fileName);
     void update(int statusFile, int sizeFile);
 };
