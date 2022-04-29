@@ -5,7 +5,7 @@
 
 class IObserverFile
 {
-    virtual void update(int statusFile, int sizeFile) = 0;
+    virtual void update(bool isExistFile, int sizeFile) = 0;
 };
 
 class ObserverFile : public IObserverFile
