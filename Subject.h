@@ -2,9 +2,18 @@
 #define SUBJECT_H
 
 #include <QFile>
+#include <QTextStream>
 #include <QList>
 #include "Observer.h"
 
+enum class ErrorCodeSubjects
+{
+    errorStreamInWrite,
+    errorStreamInRead,
+
+    errorFileIsNotWritable,
+    errorFileIsNotReadable
+};
 
 class ASubject
 {
@@ -21,6 +30,9 @@ class MyFile : public ASubject
 public:
     MyFile(QString fileName) : file(fileName) {};
     void updateObservers();
+
+    QString read();
+    void write(const QString& str);
 };
 
 
