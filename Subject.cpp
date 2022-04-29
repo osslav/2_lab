@@ -1,32 +1,32 @@
 #include "Subject.h"
 
-void ASubject::attach(ObserverFile *newObserver)
+void ASubject::attach(ObserverFile *newObserver)            //добавление наблюдателя
 {
     list.push_back(newObserver);
 }
 
-void ASubject::detach(ObserverFile *removedFile)
+void ASubject::detach(ObserverFile *removedFile)            //удаление наблюдателя
 {
     list.removeAll(removedFile);
 }
 
-void ASubject::notify(bool fileExist, int size)
+void ASubject::notify(bool fileExist, int size)             //обновление данных о наблюдателях(с передачей данных в виде аргумента)
 {
-    for (int i = 0; i < list.size(); i++)
-        if (list[i] != 0)
+    for (int i = 0; i < list.size(); i++)                   //идем по циклу и обновляем данные в наблюдателях
+        if (list[i] != nullptr)
             list[i]->update(fileExist, size);
 }
 
 
-void MyFile::updateObservers()
+void MyFile::updateObservers()                              //обновление данных о наблюдателях(данные берем напрямую от файла)
 {
     notify(file.exists(), file.size());
 }
 
-QString MyFile::read()
+QString MyFile::read()                                      //чтение из файла
 {
     QString str;
-    if (file.open(QIODevice::ReadOnly))
+    if (file.open(QIODevice::ReadOnly))                     //проверка доступен ли файл для чтения
     {
         QTextStream stream(&file);
         QString newStr = stream.readLine();
@@ -37,7 +37,7 @@ QString MyFile::read()
         }
 
         file.close();
-        if (stream.status() != QTextStream::Ok)
+        if (stream.status() != QTextStream::Ok)             //проверка статуса потока после чтения
         {
             throw ErrorCodeSubjects::errorStreamInWrite;
         }
@@ -48,14 +48,14 @@ QString MyFile::read()
     return str;
 }
 
-void MyFile::write(const QString& str)
+void MyFile::write(const QString& str)                      //запись в файл(с удалением всей текущей информации в файле)
 {
-    if (file.open(QIODevice::WriteOnly))
+    if (file.open(QIODevice::WriteOnly))                    //проверка доступен ли файл для записи
     {
         QTextStream stream(&file);
         stream << str;
         file.close();
-        if (stream.status() != QTextStream::Ok)
+        if (stream.status() != QTextStream::Ok)             //проверка статуса потока после записи
         {
             throw ErrorCodeSubjects::errorStreamInWrite;
         }
@@ -63,5 +63,5 @@ void MyFile::write(const QString& str)
     else
         throw ErrorCodeSubjects::errorFileIsNotWritable;
 
-    updateObservers();
+    updateObservers();                                      //обновление наблюдателей, поскольку файл изменился
 }

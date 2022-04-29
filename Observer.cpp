@@ -1,18 +1,18 @@
 #include "Observer.h"
 #include <QTextStream>
 
-ObserverFile::ObserverFile(QString fileName)
+ObserverFile::ObserverFile(QString fileName)                    //конструктор для наблюдателя файла(принимает имя файла и инициаллизирует поля)
 {
     name = fileName;
-    size = 0;
+    size = -1;
     fileExist = false;
 }
 
-void ObserverFile::update(bool isExistFile, int sizeFile)
+void ObserverFile::update(bool isExistFile, int sizeFile)       //обновление данных о файле
 {       
-    QTextStream cout(stdout);
+    QTextStream cout(stdout);                                   //задаем поток для вывода в консоль
 
-    if (isExistFile)
+    if (isExistFile)                                            //в зависимости новых и старых данных о файле делаем вывод о том что с ним произошло
         if (size == sizeFile)
             if (size != 0)
                 cout << "File \"" << name << "\" exist and not empty. Size: " << sizeFile << '\n';
@@ -23,6 +23,7 @@ void ObserverFile::update(bool isExistFile, int sizeFile)
     else
         cout << "File \"" << name << "\" not exist.\n";
 
-    size = sizeFile;
+    size = sizeFile;                                            //обновляем данные в полях объекта
     fileExist = isExistFile;
 }
+
