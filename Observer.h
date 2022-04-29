@@ -12,9 +12,10 @@ class ObserverFile : public IObserverFile
 {
     QString name;
     int size;
+    bool fileExist;
 public:
     ObserverFile(QString fileName);
-    void update(int statusFile, int sizeFile);
+    void update(bool isExistFile, int sizeFile = 0);
 };
 
 #endif // OBSERVER_H
