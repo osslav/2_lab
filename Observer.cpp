@@ -1,16 +1,17 @@
 #include "Observer.h"
 #include <QTextStream>
 
-QTextStream cout(stdout);
-
 ObserverFile::ObserverFile(QString fileName)
 {
     name = fileName;
     size = 0;
+    fileExist = false;
 }
 
 void ObserverFile::update(bool isExistFile, int sizeFile)
 {       
+    QTextStream cout(stdout);
+
     if (isExistFile)
         if (size == sizeFile)
             if (size != 0)
