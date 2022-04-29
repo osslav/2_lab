@@ -13,7 +13,10 @@ void ObserverFile::update(bool isExistFile, int sizeFile)
 {       
     if (isExistFile)
         if (size == sizeFile)
-            cout << "File \"" << name << "\" exist and not empty. Size: " << sizeFile << '\n';
+            if (size != 0)
+                cout << "File \"" << name << "\" exist and not empty. Size: " << sizeFile << '\n';
+            else
+                cout << "File \"" << name << "\" exist and empty.\n";
         else
             cout << "File \"" << name << "\" exist and was changed. New size: " << sizeFile << '\n';
     else
