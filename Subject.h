@@ -21,7 +21,7 @@ class ASubject
 public:
     void attach(ObserverFile *newFile);
     void detach(ObserverFile *removedFile);
-    void notify(int statusFile, int size);
+    void notify(bool fileExist, int size);
 };
 
 class MyFile : public ASubject

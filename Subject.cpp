@@ -1,8 +1,8 @@
 #include "Subject.h"
 
-void ASubject::attach(ObserverFile *newFile)
+void ASubject::attach(ObserverFile *newObserver)
 {
-    list.push_back(newFile);
+    list.push_back(newObserver);
 }
 
 void ASubject::detach(ObserverFile *removedFile)
@@ -10,11 +10,11 @@ void ASubject::detach(ObserverFile *removedFile)
     list.removeAll(removedFile);
 }
 
-void ASubject::notify(int statusFile, int size)
+void ASubject::notify(bool fileExist, int size)
 {
     for (int i = 0; i < list.size(); i++)
         if (list[i] != 0)
-            list[i]->update(statusFile, size);
+            list[i]->update(fileExist, size);
 }
 
 
