@@ -5,9 +5,9 @@ void ASubject::attach(ObserverFile *newObserver)            //добавлени
     list.push_back(newObserver);
 }
 
-void ASubject::detach(ObserverFile *removedFile)            //удаление наблюдателя
+void ASubject::detach(ObserverFile *removedObserver)            //удаление наблюдателя
 {
-    list.removeAll(removedFile);
+    list.removeAll(removedObserver);
 }
 
 void ASubject::notify(bool fileExist, int size)             //обновление данных о наблюдателях(с передачей данных в виде аргумента)
