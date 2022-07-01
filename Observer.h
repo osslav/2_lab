@@ -3,13 +3,13 @@
 
 #include <QString>
 //класс интерфейс для наблюдателя файла
-class IObserverFile
+class IObserver
 {
     virtual void update(bool isExistFile, int sizeFile) = 0;        //чистая виртуальная функция для обновления данных о файле
 };
 
 //класс реализация для наблюдателя файла
-class ObserverFile : public IObserverFile
+class ObserverFile : public IObserver
 {
     QString name;           //имя файла(для вывода в консоль)
     int size;               //размер файла
