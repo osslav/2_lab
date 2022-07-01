@@ -8,7 +8,7 @@
 
 class ASubject                                  //класс для обслуживания наблюдателей
 {
-    QList<ObserverFile*> list;                  //список наблюдателей
+    QList<IObserver*> list;                  //список наблюдателей
 public:
     void attach(ObserverFile *newObserver);         //добавление наблюдателя
     void detach(ObserverFile *removedObserver);     //удаление наблюдателя
