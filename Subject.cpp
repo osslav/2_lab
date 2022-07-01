@@ -1,11 +1,11 @@
 #include "Subject.h"
 
-void ASubject::attach(ObserverFile *newObserver)            //добавление наблюдателя
+bool ASubject::attach(IObserver *newObserver)            //добавление наблюдателя
 {
     list.push_back(newObserver);
 }
 
-void ASubject::detach(ObserverFile *removedObserver)            //удаление наблюдателя
+bool ASubject::detach(IObserver *removedObserver)            //удаление наблюдателя
 {
     list.removeAll(removedObserver);
 }
